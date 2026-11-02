@@ -1,0 +1,957 @@
+﻿Schemathesis v4.27.5
+тФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБ
+
+
+ тЬЕ  Loaded specification from http://127.0.0.1:8666/api/openapi.json (in      
+ 0.33s)                                                                        
+
+     Base URL:         http://127.0.0.1:8666                                   
+     Specification:    Open API 3.1.0                                          
+     Operations:       41 selected / 41 total                                  
+
+
+ тЬЕ  API capabilities:                                                         
+
+     Supports NULL byte in headers:                            тЬШ               
+     Accepts backslash and control characters in URL paths:    тЬУ               
+
+ тПн   Examples (in 0.02s)                                                       
+                                                                               
+     тПн  41 skipped                                                             
+
+ тЭМ  Coverage (in 7.81s)                                                       
+                                                                               
+     тЬЕ 12 passed  тЭМ 29 failed                                                
+
+ тЭМ  Fuzzing (in 74.49s)                                                       
+                                                                               
+     тЬЕ 10 passed  тЭМ 31 failed                                                
+
+ тЭМ  Stateful (in 217.62s)                                                     
+
+     Scenarios:    4329                                                        
+     API Links:    0 covered / 26 selected / 26 total                          
+
+     тЬЕ 4027 passed  тЭМ 302 failed                                             
+
+=================================== FAILURES ===================================
+_____________________ DELETE /admin/measures/{measure_id} ______________________
+1. Test Case ID: uty61y
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨Ь╨╡╤А╨░ ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜╨░"}`
+
+Reproduce with:
+
+    curl -X DELETE -H 'Authorization: [Filtered]' http://127.0.0.1:8666/admin/measures/0
+    
+    st replay uty61y
+
+_______________ DELETE /api/templates/measure-templates/{mt_id} ________________
+1. Test Case ID: MCISDv
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨и╨░╨▒╨╗╨╛╨╜ ╨╝╨╡╤А ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜"}`
+
+Reproduce with:
+
+    curl -X DELETE -H 'Authorization: [Filtered]' http://127.0.0.1:8666/api/templates/measure-templates/0
+    
+    st replay MCISDv
+
+__________________ DELETE /api/templates/threat-types/{tt_id} __________________
+1. Test Case ID: Ts6iuR
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨в╨╕╨┐ ╤Г╨│╤А╨╛╨╖╤Л ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜"}`
+
+Reproduce with:
+
+    curl -X DELETE -H 'Authorization: [Filtered]' http://127.0.0.1:8666/api/templates/threat-types/0
+    
+    st replay Ts6iuR
+
+_________________ DELETE /api/templates/vuln-templates/{vt_id} _________________
+1. Test Case ID: wcGvRV
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨и╨░╨▒╨╗╨╛╨╜ ╤Г╤П╨╖╨▓╨╕╨╝╨╛╤Б╤В╨╕ ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜"}`
+
+Reproduce with:
+
+    curl -X DELETE -H 'Authorization: [Filtered]' http://127.0.0.1:8666/api/templates/vuln-templates/0
+    
+    st replay wcGvRV
+
+________________________ GET /admin/measures/candidates ________________________
+1. Test Case ID: Hb1yrn
+
+- Server error
+
+- Undocumented HTTP status code
+
+    Received: 500
+    Documented: 200, 422
+
+[500] Internal Server Error:
+
+    `Internal Server Error`
+
+Reproduce with:
+
+    curl -X GET -H 'Authorization: [Filtered]' 'http://127.0.0.1:8666/admin/measures/candidates?status=%F1%8B%A0%9C%00a%3B%F2%96%8C%A0%0E'
+    
+    st replay Hb1yrn
+
+_______________________________ GET /api/letters _______________________________
+1. Test Case ID: cAIaL3
+
+- Server error
+
+- Undocumented HTTP status code
+
+    Received: 500
+    Documented: 200, 422
+
+[500] Internal Server Error:
+
+    `Internal Server Error`
+
+Reproduce with:
+
+    curl -X GET -H 'Authorization: [Filtered]' 'http://127.0.0.1:8666/api/letters?limit=489371&skip=-4398046511104'
+    
+    st replay cAIaL3
+
+_________________________ GET /api/letters/{letter_id} _________________________
+1. Test Case ID: erwIxS
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨Я╨╕╤Б╤М╨╝╨╛ ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜╨╛"}`
+
+Reproduce with:
+
+    curl -X GET -H 'Authorization: [Filtered]' http://127.0.0.1:8666/api/letters/0
+    
+    st replay erwIxS
+
+____________________ GET /api/letters/{letter_id}/download _____________________
+1. Test Case ID: tGZPf8
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨Ю╤В╨▓╨╡╤В ╨╡╤Й╤С ╨╜╨╡ ╤Б╨│╨╡╨╜╨╡╤А╨╕╤А╨╛╨▓╨░╨╜"}`
+
+Reproduce with:
+
+    curl -X GET -H 'Authorization: [Filtered]' http://127.0.0.1:8666/api/letters/0/download
+    
+    st replay tGZPf8
+
+______________ GET /api/letters/{letter_id}/export/{export_type} _______________
+1. Test Case ID: 1E9ohn
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨Я╨╕╤Б╤М╨╝╨╛ ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜╨╛"}`
+
+Reproduce with:
+
+    curl -X GET -H 'Authorization: [Filtered]' http://127.0.0.1:8666/api/letters/0/export/0
+    
+    st replay 1E9ohn
+
+____________ GET /api/letters/{letter_id}/export/{export_type}/docx ____________
+1. Test Case ID: m7au0H
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨Я╨╕╤Б╤М╨╝╨╛ ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜╨╛"}`
+
+Reproduce with:
+
+    curl -X GET -H 'Authorization: [Filtered]' http://127.0.0.1:8666/api/letters/0/export/0/docx
+    
+    st replay m7au0H
+
+________________ GET /api/letters/{letter_id}/response/preview _________________
+1. Test Case ID: IJ3xL8
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨Я╨╕╤Б╤М╨╝╨╛ ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜╨╛"}`
+
+Reproduce with:
+
+    curl -X GET -H 'Authorization: [Filtered]' http://127.0.0.1:8666/api/letters/0/response/preview
+    
+    st replay IJ3xL8
+
+________________________________ GET /documents ________________________________
+1. Test Case ID: CPs962
+
+- Server error
+
+- Undocumented HTTP status code
+
+    Received: 500
+    Documented: 200, 422
+
+[500] Internal Server Error:
+
+    `Internal Server Error`
+
+Reproduce with:
+
+    curl -X GET -H 'Authorization: [Filtered]' 'http://127.0.0.1:8666/documents?limit=489371&skip=-4398046511104'
+    
+    st replay CPs962
+
+___________________________ GET /documents/{doc_id} ____________________________
+1. Test Case ID: MlYWED
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜"}`
+
+Reproduce with:
+
+    curl -X GET -H 'Authorization: [Filtered]' http://127.0.0.1:8666/documents/0
+    
+    st replay MlYWED
+
+________________________ GET /reports/{doc_id}/download ________________________
+1. Test Case ID: 5bHygO
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨Ю╤В╤З╤С╤В ╨╡╤Й╤С ╨╜╨╡ ╤Б╤Д╨╛╤А╨╝╨╕╤А╨╛╨▓╨░╨╜"}`
+
+Reproduce with:
+
+    curl -X GET -H 'Authorization: [Filtered]' http://127.0.0.1:8666/reports/0/download
+    
+    st replay 5bHygO
+
+______________________ GET /reports/{doc_id}/download_raw ______________________
+1. Test Case ID: ky1okl
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜"}`
+
+Reproduce with:
+
+    curl -X GET -H 'Authorization: [Filtered]' http://127.0.0.1:8666/reports/0/download_raw
+    
+    st replay ky1okl
+
+___________________________ OPTIONS /admin/measures ____________________________
+1. Test Case ID: st8mNQ
+
+- Invalid Allow header
+
+    `Allow` header does not match the schema тАФ missing documented methods: POST
+
+    List exactly the methods this resource supports in `Allow`
+
+[405] Method Not Allowed:
+
+    `{"detail":"Method Not Allowed"}`
+
+Reproduce with:
+
+    curl -X OPTIONS -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/admin/measures
+    
+    st replay st8mNQ
+
+______________________ OPTIONS /admin/measures/candidates ______________________
+1. Test Case ID: jTHjjF
+
+- Invalid Allow header
+
+    `Allow` header does not match the schema тАФ missing documented methods: GET; undocumented methods advertised: DELETE
+
+    List exactly the methods this resource supports in `Allow`
+
+[405] Method Not Allowed:
+
+    `{"detail":"Method Not Allowed"}`
+
+Reproduce with:
+
+    curl -X OPTIONS -H 'Authorization: [Filtered]' 'http://127.0.0.1:8666/admin/measures/candidates?status=pending'
+    
+    st replay jTHjjF
+
+___________________ OPTIONS /api/templates/measure-templates ___________________
+1. Test Case ID: lG1Diu
+
+- Invalid Allow header
+
+    `Allow` header does not match the schema тАФ missing documented methods: POST
+
+    List exactly the methods this resource supports in `Allow`
+
+[405] Method Not Allowed:
+
+    `{"detail":"Method Not Allowed"}`
+
+Reproduce with:
+
+    curl -X OPTIONS -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/api/templates/measure-templates
+    
+    st replay lG1Diu
+
+_______________ OPTIONS /api/templates/measure-templates/{mt_id} _______________
+1. Test Case ID: 9RpkuB
+
+- Invalid Allow header
+
+    `Allow` header does not match the schema тАФ missing documented methods: DELETE
+
+    List exactly the methods this resource supports in `Allow`
+
+[405] Method Not Allowed:
+
+    `{"detail":"Method Not Allowed"}`
+
+Reproduce with:
+
+    curl -X OPTIONS -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/api/templates/measure-templates/0
+    
+    st replay 9RpkuB
+
+_____________________ OPTIONS /api/templates/threat-types ______________________
+1. Test Case ID: LEPRTT
+
+- Invalid Allow header
+
+    `Allow` header does not match the schema тАФ missing documented methods: POST
+
+    List exactly the methods this resource supports in `Allow`
+
+[405] Method Not Allowed:
+
+    `{"detail":"Method Not Allowed"}`
+
+Reproduce with:
+
+    curl -X OPTIONS -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/api/templates/threat-types
+    
+    st replay LEPRTT
+
+_________________ OPTIONS /api/templates/threat-types/{tt_id} __________________
+1. Test Case ID: HOLh5P
+
+- Invalid Allow header
+
+    `Allow` header does not match the schema тАФ missing documented methods: DELETE
+
+    List exactly the methods this resource supports in `Allow`
+
+[405] Method Not Allowed:
+
+    `{"detail":"Method Not Allowed"}`
+
+Reproduce with:
+
+    curl -X OPTIONS -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/api/templates/threat-types/0
+    
+    st replay HOLh5P
+
+____________________ OPTIONS /api/templates/vuln-templates _____________________
+1. Test Case ID: spDbi1
+
+- Invalid Allow header
+
+    `Allow` header does not match the schema тАФ missing documented methods: POST
+
+    List exactly the methods this resource supports in `Allow`
+
+[405] Method Not Allowed:
+
+    `{"detail":"Method Not Allowed"}`
+
+Reproduce with:
+
+    curl -X OPTIONS -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/api/templates/vuln-templates
+    
+    st replay spDbi1
+
+________________ OPTIONS /api/templates/vuln-templates/{vt_id} _________________
+1. Test Case ID: 5JYFoJ
+
+- Invalid Allow header
+
+    `Allow` header does not match the schema тАФ missing documented methods: DELETE
+
+    List exactly the methods this resource supports in `Allow`
+
+[405] Method Not Allowed:
+
+    `{"detail":"Method Not Allowed"}`
+
+Reproduce with:
+
+    curl -X OPTIONS -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/api/templates/vuln-templates/0
+    
+    st replay 5JYFoJ
+
+_____________________________ POST /admin/measures _____________________________
+1. Test Case ID: c5E0wz
+
+- API rejected schema-compliant request
+
+    Valid data should have been accepted
+    Expected: 2xx, 401, 403, 404, 409, 429, 5xx
+
+- Undocumented HTTP status code
+
+    Received: 400
+    Documented: 200, 422
+
+[400] Bad Request:
+
+    `{"detail":"text ╨╛╨▒╤П╨╖╨░╤В╨╡╨╗╨╡╨╜"}`
+
+Reproduce with:
+
+    curl -X POST -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/admin/measures
+    
+    st replay c5E0wz
+
+____________ POST /admin/measures/candidates/{candidate_id}/accept _____________
+1. Test Case ID: fvSUMa
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨Ъ╨░╨╜╨┤╨╕╨┤╨░╤В ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜"}`
+
+Reproduce with:
+
+    curl -X POST -H 'Authorization: [Filtered]' http://127.0.0.1:8666/admin/measures/candidates/0/accept
+    
+    st replay fvSUMa
+
+____________ POST /admin/measures/candidates/{candidate_id}/reject _____________
+1. Test Case ID: 8C0uke
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨Ъ╨░╨╜╨┤╨╕╨┤╨░╤В ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜"}`
+
+Reproduce with:
+
+    curl -X POST -H 'Authorization: [Filtered]' http://127.0.0.1:8666/admin/measures/candidates/0/reject
+    
+    st replay 8C0uke
+
+_____________________________ POST /api/auth/login _____________________________
+1. Test Case ID: r2FH7n
+
+- Undocumented HTTP status code
+
+    Received: 401
+    Documented: 200, 422
+
+[401] Unauthorized:
+
+    `{"detail":"╨Э╨╡╨▓╨╡╤А╨╜╤Л╨╣ ╨╗╨╛╨│╨╕╨╜ ╨╕╨╗╨╕ ╨┐╨░╤А╨╛╨╗╤М"}`
+
+Reproduce with:
+
+    curl -X POST -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/api/auth/login
+    
+    st replay r2FH7n
+
+____________________ POST /api/templates/measure-templates _____________________
+1. Test Case ID: Wpq3bE
+
+- Response violates schema
+
+    "name ╨╛╨▒╤П╨╖╨░╤В╨╡╨╗╨╡╨╜" is not of type "array"
+
+    Validated against the response schema for status code 422.
+
+    Schema at /components/schemas/HTTPValidationError/properties/detail:
+
+        {
+            "type": "array",
+            "items": {
+                "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail"
+        }
+
+    Value:
+
+        "name \u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u0435\u043d"
+
+- API rejected schema-compliant request
+
+    Valid data should have been accepted
+    Expected: 2xx, 401, 403, 404, 409, 429, 5xx
+
+[422] Unprocessable Content:
+
+    `{"detail":"name ╨╛╨▒╤П╨╖╨░╤В╨╡╨╗╨╡╨╜"}`
+
+Reproduce with:
+
+    curl -X POST -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/api/templates/measure-templates
+    
+    st replay Wpq3bE
+
+_______________________ POST /api/templates/threat-types _______________________
+1. Test Case ID: 3vhxJp
+
+- Response violates schema
+
+    "name ╨╕ key ╨╛╨▒╤П╨╖╨░╤В╨╡╨╗╤М╨╜╤Л" is not of type "array"
+
+    Validated against the response schema for status code 422.
+
+    Schema at /components/schemas/HTTPValidationError/properties/detail:
+
+        {
+            "type": "array",
+            "items": {
+                "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail"
+        }
+
+    Value:
+
+        "name \u0438 key \u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d...
+
+- API rejected schema-compliant request
+
+    Valid data should have been accepted
+    Expected: 2xx, 401, 403, 404, 409, 429, 5xx
+
+[422] Unprocessable Content:
+
+    `{"detail":"name ╨╕ key ╨╛╨▒╤П╨╖╨░╤В╨╡╨╗╤М╨╜╤Л"}`
+
+Reproduce with:
+
+    curl -X POST -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/api/templates/threat-types
+    
+    st replay 3vhxJp
+
+______________________ POST /api/templates/vuln-templates ______________________
+1. Test Case ID: KAeOZ3
+
+- Response violates schema
+
+    "name ╨╛╨▒╤П╨╖╨░╤В╨╡╨╗╨╡╨╜" is not of type "array"
+
+    Validated against the response schema for status code 422.
+
+    Schema at /components/schemas/HTTPValidationError/properties/detail:
+
+        {
+            "type": "array",
+            "items": {
+                "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail"
+        }
+
+    Value:
+
+        "name \u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u0435\u043d"
+
+- API rejected schema-compliant request
+
+    Valid data should have been accepted
+    Expected: 2xx, 401, 403, 404, 409, 429, 5xx
+
+[422] Unprocessable Content:
+
+    `{"detail":"name ╨╛╨▒╤П╨╖╨░╤В╨╡╨╗╨╡╨╜"}`
+
+Reproduce with:
+
+    curl -X POST -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/api/templates/vuln-templates
+    
+    st replay KAeOZ3
+
+_____________________________ POST /reply/generate _____________________________
+1. Test Case ID: pCDfVL
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨Ф╨╛╨║╤Г╨╝╨╡╨╜╤В ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜"}`
+
+Reproduce with:
+
+    curl -X POST -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d null 'http://127.0.0.1:8666/reply/generate?doc_id=0'
+    
+    st replay pCDfVL
+
+_________________________________ POST /upload _________________________________
+1. Test Case ID: qirROQ
+
+- Undocumented HTTP status code
+
+    Received: 415
+    Documented: 201, 422
+
+[415] Unsupported Media Type:
+
+    `{"detail":"╨Э╨╡╨┤╨╛╨┐╤Г╤Б╤В╨╕╨╝╤Л╨╣ ╤Д╨╛╤А╨╝╨░╤В: (╨╜╨╡╤В ╤А╨░╤Б╤И╨╕╤А╨╡╨╜╨╕╤П)"}`
+
+Reproduce with:
+
+    curl -X POST -H 'Authorization: [Filtered]' -H 'Content-Type: multipart/form-data; boundary=9ba9315a207f17e4c32db4e7ffdcceb3' -d $'--9ba9315a207f17e4c32db4e7ffdcceb3\r\nContent-Disposition: form-data; name="files"; filename="files"\r\n\r\nNone\r\n--9ba9315a207f17e4c32db4e7ffdcceb3\r\nContent-Disposition: form-data; name="files"; filename="files"\r\n\r\nNone\r\n--9ba9315a207f17e4c32db4e7ffdcceb3--\r\n' http://127.0.0.1:8666/upload
+    
+    тЪая╕П  Request body contains non-printable characters. Actual value: b'--9ba9315a207f17e4c32db4e7ffdcceb3\r\nContent-Disposition: form-data; name="files"; filename="files"\r\n\r\nNone\r\n--9ba9315a207f17e4c32db4e7ffdcceb3\r\nContent-Disposition: form-data; name="files"; filename="files"\r\n\r\nNone\r\n--9ba9315a207f17e4c32db4e7ffdcceb3--\r\n'
+    
+    st replay qirROQ
+
+2. Test Case ID: SilG7D
+
+- API rejected schema-compliant request
+
+    Valid data should have been accepted
+    Expected: 2xx, 401, 403, 404, 409, 429, 5xx
+
+- Undocumented HTTP status code
+
+    Received: 400
+    Documented: 201, 422
+
+[400] Bad Request:
+
+    `{"detail":"╨Э╨╡╤В ╤Д╨░╨╣╨╗╨╛╨▓"}`
+
+Reproduce with:
+
+    curl -X POST -H 'Authorization: [Filtered]' -H 'Content-Type: multipart/form-data; boundary=eb635997a6c6c073faeb36ca9d6d50e8' -d $'--eb635997a6c6c073faeb36ca9d6d50e8\r\n' http://127.0.0.1:8666/upload
+    
+    тЪая╕П  Request body contains non-printable characters. Actual value: b'--eb635997a6c6c073faeb36ca9d6d50e8\r\n'
+    
+    st replay SilG7D
+
+____________________ PUT /api/letters/{letter_id}/response _____________________
+1. Test Case ID: leE7CI
+
+- Server error
+
+- Undocumented HTTP status code
+
+    Received: 500
+    Documented: 200, 422
+
+[500] Internal Server Error:
+
+    `Internal Server Error`
+
+Reproduce with:
+
+    curl -X PUT -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/api/letters/0/response
+    
+    st replay leE7CI
+
+__________ PUT /api/letters/{letter_id}/response/measures/{threat_id} __________
+1. Test Case ID: ThEM45
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨г╨│╤А╨╛╨╖╨░ ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜╨░"}`
+
+Reproduce with:
+
+    curl -X PUT -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/api/letters/0/response/measures/0
+    
+    st replay ThEM45
+
+____________ PUT /api/letters/{letter_id}/vulnerabilities/{vuln_id} ____________
+1. Test Case ID: bvffWQ
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨г╤П╨╖╨▓╨╕╨╝╨╛╤Б╤В╤М ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜╨░"}`
+
+Reproduce with:
+
+    curl -X PUT -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/api/letters/0/vulnerabilities/0
+    
+    st replay bvffWQ
+
+_________________ PUT /api/templates/measure-templates/{mt_id} _________________
+1. Test Case ID: PabC1n
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨и╨░╨▒╨╗╨╛╨╜ ╨╝╨╡╤А ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜"}`
+
+Reproduce with:
+
+    curl -X PUT -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/api/templates/measure-templates/6681
+    
+    st replay PabC1n
+
+___________________ PUT /api/templates/threat-types/{tt_id} ____________________
+1. Test Case ID: WTHSnm
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨в╨╕╨┐ ╤Г╨│╤А╨╛╨╖╤Л ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜"}`
+
+Reproduce with:
+
+    curl -X PUT -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/api/templates/threat-types/6681
+    
+    st replay WTHSnm
+
+__________________ PUT /api/templates/vuln-templates/{vt_id} ___________________
+1. Test Case ID: 2yexPp
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨и╨░╨▒╨╗╨╛╨╜ ╤Г╤П╨╖╨▓╨╕╨╝╨╛╤Б╤В╨╕ ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜"}`
+
+Reproduce with:
+
+    curl -X PUT -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/api/templates/vuln-templates/6681
+    
+    st replay 2yexPp
+
+______________ PUT /documents/{doc_id}/vulnerabilities/{vuln_id} _______________
+1. Test Case ID: FUwTyU
+
+- Undocumented HTTP status code
+
+    Received: 404
+    Documented: 200, 422
+
+[404] Not Found:
+
+    `{"detail":"╨г╤П╨╖╨▓╨╕╨╝╨╛╤Б╤В╤М ╨╜╨╡ ╨╜╨░╨╣╨┤╨╡╨╜╨░"}`
+
+Reproduce with:
+
+    curl -X PUT -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:8666/documents/0/vulnerabilities/0
+    
+    st replay FUwTyU
+
+________________________________ Stateful tests ________________________________
+1. Test Case ID: oWozia
+
+- Undocumented HTTP status code
+
+    Received: 400
+    Documented: 200, 422
+
+[400] Bad Request:
+
+    `{"detail":"There was an error parsing the body"}`
+
+Reproduce with:
+
+    curl -X GET -H 'Authorization: [Filtered]' http://127.0.0.1:8666/api/letters
+    curl -X PUT -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d 'я┐╜d' http://127.0.0.1:8666/api/letters/10651873/response/measures/27673910272
+    
+    st replay oWozia
+
+2. Test Case ID: peci3Y
+
+- Undocumented HTTP status code
+
+    Received: 400
+    Documented: 201, 422
+
+[400] Bad Request:
+
+    `{"detail":"There was an error parsing the body"}`
+
+Reproduce with:
+
+    curl -X POST -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d 'я┐╜я┐╜H' http://127.0.0.1:8666/api/templates/threat-types
+    
+    st replay peci3Y
+
+3. Test Case ID: kX5Bve
+
+- Undocumented HTTP status code
+
+    Received: 400
+    Documented: 200, 422
+
+[400] Bad Request:
+
+    `{"detail":"There was an error parsing the body"}`
+
+Reproduce with:
+
+    curl -X GET -H 'Authorization: [Filtered]' http://127.0.0.1:8666/api/letters
+    curl -X PUT -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d 'я┐╜[я┐╜Q' http://127.0.0.1:8666/api/letters/179/response
+    
+    st replay kX5Bve
+
+4. Test Case ID: VJdV3x
+
+- Undocumented HTTP status code
+
+    Received: 400
+    Documented: 200, 422
+
+[400] Bad Request:
+
+    `{"detail":"There was an error parsing the body"}`
+
+Reproduce with:
+
+    curl -X GET -H 'Authorization: [Filtered]' http://127.0.0.1:8666/api/letters
+    curl -X PUT -H 'Authorization: [Filtered]' -H 'Content-Type: application/json' -d $'-я┐╜\x04я┐╜' http://127.0.0.1:8666/api/letters/402209366681346389/vulnerabilities/7251
+    
+    тЪая╕П  Request body contains non-printable characters. Actual value: b'-\xef\xbf\xbd\x04\xef\xbf\xbd'
+    
+    st replay VJdV3x
+
+=================================== WARNINGS ===================================
+
+Authentication failed: 1 operation returned authentication errors
+
+401 Unauthorized (1 operation):
+  - POST /api/auth/login
+
+ЁЯТб Ensure valid authentication credentials are set via --auth or -H
+
+=================================== SUMMARY ====================================
+
+API Operations:
+  Selected: 41/41
+  Tested: 41
+
+Test Phases:
+  тПн  Examples
+  тЭМ Coverage
+  тЭМ Fuzzing
+  тЭМ Stateful
+
+Failures:
+  тЭМ Server error: 4
+  тЭМ Response violates schema: 3
+  тЭМ API rejected schema-compliant request: 5
+  тЭМ Invalid Allow header: 8
+  тЭМ Undocumented HTTP status code: 33
+
+Warnings:
+  тЪая╕П Missing authentication: 1 operation returned only 401/403 responses
+
+Test cases:
+  27117 generated, 44 found 53 unique failures, 26 skipped
+
+Seed: 277162454220080671399302704178555499033
+
+====================== 53 failures, 1 warning in 300.02s =======================

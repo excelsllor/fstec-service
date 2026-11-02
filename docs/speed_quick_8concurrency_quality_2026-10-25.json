@@ -1,0 +1,34 @@
+{
+  "started_at": 1792953798.8315406,
+  "duration_requested_s": 1.0,
+  "concurrency": 8,
+  "letters": 8,
+  "uploaded": 8,
+  "completed": 8,
+  "failed": 0,
+  "timeout": 0,
+  "upload_errors": 0,
+  "poll_errors": 0,
+  "durations_s": [
+    121.68,
+    127.8,
+    144.17,
+    154.36,
+    223.35,
+    233.53,
+    296.49,
+    308.67
+  ],
+  "failures": [],
+  "stages": {
+    "done": 8
+  },
+  "elapsed_s": 309.0,
+  "finished_at": 1792954107.8285534,
+  "throughput_completed_per_hour": 93.2,
+  "throughput_uploaded_per_hour": 93.2,
+  "duration_p50_s": 188.86,
+  "duration_p95_s": 296.49,
+  "duration_min_s": 121.68,
+  "duration_max_s": 308.67
+}

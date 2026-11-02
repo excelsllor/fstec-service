@@ -1,0 +1,6 @@
+# PaddleOCR (GPU/CUDA) — ставится ТОЛЬКО в образ ingest-service (docker-compose build arg WITH_OCR=true).
+# Требуется NVIDIA GPU и совместимый CUDA-рантайм (cu118).
+--extra-index-url https://www.paddlepaddle.org.cn/packages/stable/cu118/
+numpy==1.26.4
+paddlepaddle-gpu==2.6.2
+paddleocr==2.7.3

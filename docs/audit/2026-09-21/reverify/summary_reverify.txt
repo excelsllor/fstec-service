@@ -1,0 +1,60 @@
+======================================================================
+ПЕРЕПРОВЕРКА ПОСЛЕ ИСПРАВЛЕНИЙ (2026-09-21)
+Инструменты и среда те же, что в базовом аудите; код после правок F-01..F-20, F-23
+и дополнительных фиксов (аудит-лог commit, OverflowError->422, bounds на skip/threat_type_id,
+HEALTHCHECK frontend).
+======================================================================
+
+SCA (зависимости)
+----------------------------------------------------------------------
+pip-audit (requirements.txt): 27 уязв. в 2 пакетах -> 2 уязв. в 1 пакете
+    pillow 12.2.0 (25 advisories) -> 12.3.0              : ЗАКРЫТО
+    ecdsa   0.19.2 (2, PYSEC-2026-1325 Minerva)          : ОСТАЁТСЯ, фикса нет
+        (принятый риск: используется только HS256, ecdsa не в кодовом пути)
+npm audit (frontend): было prod 2 high / всего 4 -> 0:
+    react-router 7.18.4, react-router-dom, nanoid 3.3.18, postcss 8.5.16
+
+SAST
+----------------------------------------------------------------------
+semgrep (p/default): было 7 -> 5 находок; подтверждённых true-positive 0
+    Закрыты: dockerfile missing-user, fastapi wildcard-cors,
+             logger-credential-leak (main.py:72, auth.py:95)
+    Остаются FP/инфо: sqlalchemy.text x2 (фикс. список _run_id_tables),
+             logger-credential-leak в llm/provider (счётчики токенов),
+             dynamic-urllib x2 (внешние BDU/NVD/CMDB)
+bandit (medium+): новых реальных нет. B310 (urllib), B104 (bind в __main__),
+    B615 (HF rubert без pin ревизии), B314 (xml.etree: XXE не воспроизводится)
+
+Trivy
+----------------------------------------------------------------------
+gateway image : 407 (было 420): CRIT 1 (libxml2 CVE-2026-6653, фикса в репозитории
+                 нет - остаточный риск), HIGH 94->84, MEDIUM 112->109, LOW 202
+nginx image   : 137 -> 0 (было 2 CRIT: libssl3/libcrypto3 CVE-2026-31789;
+                 устранены сменой базового образа + apk upgrade)
+fs (repo)     : 15 -> 1 MEDIUM (glib<=0.18.5 GHSA-wrw7-89jp-8q8g, Rust/Tauri,
+                 на сервере не используется)
+misconfig     : 4 -> 0 (DS-0002 root -> USER appuser / USER nginx;
+                 DS-0026 -> HEALTHCHECK добавлен в оба Dockerfile)
+secrets       : 0 (без изменений)
+
+DAST
+----------------------------------------------------------------------
+schemathesis: 53 уникальных сбоя -> 47; SERVER ERRORS 4 -> 0
+    закрыты 500-е: GET /documents и /api/letters (skip/limit),
+                   GET /admin/measures/candidates (status)
+    доп. фикс (обнаружен при реверификации):
+        числовые параметры вне диапазона SQLite INTEGER (skip/id/threat_type_id
+        порядка 10^25) давали 500 -> теперь:
+          - Query bounds: skip (<=10^6), threat_type_id (<=2^31-1)
+          - глобальный обработчик OverflowError -> 422
+    остаются не-security контрактные замечания: undocumented 30, Allow 8,
+        schema conformance 4+6, 401 login при наличии Bearer.
+
+Ручные проверки и регресс
+----------------------------------------------------------------------
+verify_fixes.py: 22/22 PASS (JWT-forge 401, IDOR read+write 404, needs_setup,
+    пагинация 422, CORS, security-заголовки, ODT zip-bomb, BDU path, prod fail-fast,
+    bootstrap-пароль в файле 0600)
+pytest tests: 130 passed
+Сборка: docker compose build api-gateway + nginx OK; nginx non-root (uid 101),
+    gateway non-root (uid 10001); healthcheck healthy; /api/openapi.json -> 404 (prod)

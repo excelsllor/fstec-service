@@ -1,0 +1,46 @@
+# Перекрытия для ВМ РЕД ОС 8 + GRID T4-16Q (driver 550, нет nvidia-container-toolkit).
+# GPU-контейнеры недоступны -> vLLM на хосте, доступ через TLS-прокси vllm-proxy;
+# OCR на CPU; GPU-резервации сняты; compose-vllm отключён.
+services:
+  llm-service:
+    depends_on: !override [kafka, redis, postgres, vllm-proxy]
+    extra_hosts: !override ["host.docker.internal:host-gateway"]
+    environment:
+      FSTEC_LLM_PROVIDER: vllm
+      VLLM_BASE_URL: https://vllm-proxy:8443/v1
+      VLLM_CA_FILE: /etc/fstec/vllm-ca.crt
+      VLLM_MODEL: Qwen3-8B
+      FSTEC_LLM_TIMEOUT_S: "300"
+  ingest-service:
+    deploy: !override {resources: {reservations: {devices: []}}}
+    environment:
+      FSTEC_OCR_ENABLED: "true"
+      FSTEC_OCR_DEVICE: cpu
+  security-service:
+    environment:
+      FSTEC_SECURITY_MODE: live
+      CMDB_PROVIDER: ${CMDB_PROVIDER:-mock}
+      # httpx 0.28 reads the CA bundle from SSL_CERT_FILE when verify=True.
+      # The RHEL bundle on the host contains the Russian Trusted Sub CA (Mincifry)
+      # used by *.fstec.ru; the Debian bundle inside the image does not, so the
+      # BDU TLS verification failed and BDU enrichment never worked.
+      SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+    volumes:
+      - /etc/pki/tls/certs/ca-bundle.crt:/etc/ssl/certs/ca-certificates.crt:ro
+  vllm:
+    profiles: ["disabled-here"]
+
+  api-gateway:
+    environment:
+      FSTEC_LLM_PROVIDER: vllm
+      VLLM_BASE_URL: https://vllm-proxy:8443/v1
+      VLLM_CA_FILE: /etc/fstec/vllm-ca.crt
+      VLLM_MODEL: Qwen3-8B
+      FSTEC_LLM_TIMEOUT_S: "300"
+  reporting-service:
+    environment:
+      FSTEC_LLM_PROVIDER: vllm
+      VLLM_BASE_URL: https://vllm-proxy:8443/v1
+      VLLM_CA_FILE: /etc/fstec/vllm-ca.crt
+      VLLM_MODEL: Qwen3-8B
+      FSTEC_LLM_TIMEOUT_S: "300"

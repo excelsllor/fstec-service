@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=ФСТЭК Сервис
+Name[en]=FSTEC Service
+Comment=Обработка писем по результатам мониторинга ИСПДн
+Comment[en]=Process letters from PDN monitoring results
+Exec=xdg-open 'http://127.0.0.1:8666/verify/'
+Icon=fstec-service
+Terminal=false
+Categories=Office;
+StartupNotify=false

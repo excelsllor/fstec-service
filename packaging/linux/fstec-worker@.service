@@ -1,0 +1,27 @@
+[Unit]
+Description=FSTEC worker (%i)
+After=network.target
+
+[Service]
+Type=simple
+User=fstec
+Group=fstec
+WorkingDirectory=/opt/fstec-service/services
+ExecStart=/usr/bin/env python3 -m %i_service.worker
+Environment=FSTEC_EVENT_BUS=sqlite
+Environment=FSTEC_DATA_DIR=/var/lib/fstec-service
+Environment=DATABASE_URL=sqlite:////var/lib/fstec-service/fstec_services.db
+Environment=FSTEC_OCR_ENABLED=false
+Environment=FSTEC_LLM_PROVIDER=heuristic
+Environment=FSTEC_SECURITY_MODE=mock
+Environment=CMDB_PROVIDER=mock
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/fstec-service
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

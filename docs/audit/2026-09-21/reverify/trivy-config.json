@@ -1,0 +1,39 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.74.0"
+  },
+  "ReportID": "01a0c4b2-af20-7aff-9228-9d93e2c704e8",
+  "CreatedAt": "2026-09-21T16:00:39.712722691Z",
+  "ArtifactID": "sha256:25eed7553fb3ac1f744e983503343101290dca8dfe2330fb75bd75be6e0b8e95",
+  "ArtifactName": "/src",
+  "ArtifactType": "repository",
+  "Metadata": {
+    "RepoURL": "https://github.com/excelsllor/fstec.git",
+    "Branch": "feat/llm-8b-redis-fixes",
+    "Commit": "b5d7e02ec085b5620ed48e8408e88ee4a6ca13f5",
+    "CommitMsg": "fix: orgname адресата + аудит безопасности (XXE, TLS BDU, rate-limit, секьюрити-тесты)",
+    "Author": "artyom \u003cgamer048fg@gmail.com\u003e",
+    "Committer": "artyom \u003cgamer048fg@gmail.com\u003e"
+  },
+  "Results": [
+    {
+      "Target": "frontend/Dockerfile",
+      "Class": "config",
+      "Type": "dockerfile",
+      "MisconfSummary": {
+        "Successes": 27,
+        "Failures": 0
+      }
+    },
+    {
+      "Target": "services/Dockerfile",
+      "Class": "config",
+      "Type": "dockerfile",
+      "MisconfSummary": {
+        "Successes": 27,
+        "Failures": 0
+      }
+    }
+  ]
+}

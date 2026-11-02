@@ -1,0 +1,58 @@
+# Node
+node_modules/
+frontend/dist/
+frontend/dist-package/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.bak_*
+.venv/
+backend/dist/
+backend/build/
+backend/data/
+backend/*.egg-info/
+
+# Secrets / database
+*.db
+*.key
+*.pem
+*.env
+certs/
+
+# Rust / Tauri
+src-tauri/target/
+src-tauri/gen/
+
+# Installers (артефакты сборки)
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Качество/корпус/кэш pytest (не код)
+services/data/quality/
+services/data/registry/
+services/data/reports/
+services/data/logs/
+services/data/raw/
+services/data/uploads/
+services/data/backup*/
+services/corpus/
+services/.pytest_cache/
+*.db-shm
+*.db-wal
+*.db-journal
+
+# Локальные кэши инструментов
+.schemathesis/
+.hypothesis/
+.ruff_cache/

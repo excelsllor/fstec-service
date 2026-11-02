@@ -1,0 +1,15 @@
+[Unit]
+Description=FSTEC container stack (decrypt secrets from host-bound credential)
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/fstec-up.sh
+ExecStop=/usr/bin/docker compose -f /home/raport/fstec-service/services/docker-compose.yml -f /home/raport/fstec-service/services/docker-compose.t4.yml down
+TimeoutStartSec=300
+
+[Install]
+WantedBy=multi-user.target

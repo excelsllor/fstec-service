@@ -1,0 +1,117 @@
+======================================================================
+SEMGREP (sarif)
+======================================================================
+[?] dockerfile.security.missing-user.missing-user services\Dockerfile:34
+    By not specifying a USER, a program in the container may run as 'root'. This is a security hazard. If an attacker can control a process running as root, they may have control over the container. Ensure that the last USER in a Dockerfile is a USER other than 'root'.
+[?] python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure services\api_gateway\main.py:72
+    Detected a python logger call with a potential hardcoded secret "Bootstrap admin password: %s" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.
+[?] python.fastapi.security.wildcard-cors.wildcard-cors services\api_gateway\main.py:82
+    CORS policy allows any origin (using wildcard '*'). This is insecure and should be avoided.
+[?] python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure services\llm_service\provider.py:169
+    Detected a python logger call with a potential hardcoded secret "vllm %s: prompt_tokens=%s completion_tokens=%s (model=%s)" being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive information.
+[?] python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure services\shared\auth.py:95
+    Detected a python logger call with a potential hardcoded secret "Bootstrap password for user '%s': %s — shown only once. "
+        "Delete bootstrap_secrets rows after first login." being logged. This may lead to secret credentials being exposed. Make sure that the logger is not logging  sensitive i
+[?] python.sqlalchemy.security.audit.avoid-sqlalchemy-text.avoid-sqlalchemy-text services\shared\db.py:59
+    sqlalchemy.text passes the constructed SQL statement to the database mostly unchanged. This means that the usual SQL injection protections are not applied and this function is vulnerable to SQL injection if user input can reach here. Use normal SQLAlchemy operators (such as `or_()`, `and_()`, etc.) 
+[?] python.sqlalchemy.security.audit.avoid-sqlalchemy-text.avoid-sqlalchemy-text services\shared\db.py:61
+    sqlalchemy.text passes the constructed SQL statement to the database mostly unchanged. This means that the usual SQL injection protections are not applied and this function is vulnerable to SQL injection if user input can reach here. Use normal SQLAlchemy operators (such as `or_()`, `and_()`, etc.) 
+
+======================================================================
+BANDIT (medium+)
+======================================================================
+[LOW/MEDIUM] B105 services\api_gateway\main.py:134
+    Possible hardcoded password: 'bearer'
+[MEDIUM/HIGH] B310 services\api_gateway\main.py:921
+    Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+[MEDIUM/MEDIUM] B104 services\api_gateway\main.py:985
+    Possible binding to all interfaces.
+[LOW/HIGH] B112 services\llm_service\provider.py:59
+    Try, Except, Continue detected.
+[LOW/HIGH] B112 services\llm_service\provider.py:70
+    Try, Except, Continue detected.
+[MEDIUM/HIGH] B310 services\llm_service\provider.py:163
+    Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+[LOW/HIGH] B112 services\llm_service\provider.py:192
+    Try, Except, Continue detected.
+[MEDIUM/HIGH] B615 services\llm_service\rubert.py:66
+    Unsafe Hugging Face Hub download without revision pinning in from_pretrained()
+[MEDIUM/HIGH] B615 services\llm_service\rubert.py:67
+    Unsafe Hugging Face Hub download without revision pinning in from_pretrained()
+[LOW/HIGH] B110 services\security_service\cache.py:91
+    Try, Except, Pass detected.
+[LOW/HIGH] B311 services\security_service\resilience.py:18
+    Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+[LOW/MEDIUM] B105 services\shared\config.py:41
+    Possible hardcoded password: 'dev-insecure-change-me'
+[LOW/HIGH] B405 services\shared\parsers\odt_parser.py:3
+    Using xml.etree.ElementTree to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree with the equivalent defusedxml package, or make sure defusedxml.defuse_stdlib() is called.
+[MEDIUM/HIGH] B314 services\shared\parsers\odt_parser.py:19
+    Using xml.etree.ElementTree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace xml.etree.ElementTree.fromstring with its defusedxml equivalent function or make sure defusedxml.defuse_stdlib() is called
+[LOW/HIGH] B110 services\shared\parsers\pdf_parser.py:29
+    Try, Except, Pass detected.
+[LOW/HIGH] B110 services\shared\registry.py:60
+    Try, Except, Pass detected.
+[LOW/HIGH] B112 services\shared\registry.py:69
+    Try, Except, Continue detected.
+[LOW/HIGH] B101 services\tools\services_smoke.py:180
+    Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+[LOW/HIGH] B101 services\tools\services_smoke.py:181
+    Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+[LOW/HIGH] B101 services\tools\services_smoke.py:182
+    Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+[LOW/HIGH] B101 services\tools\services_smoke.py:191
+    Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+[LOW/HIGH] B101 services\tools\services_smoke.py:192
+    Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+[LOW/HIGH] B101 services\tools\services_smoke.py:193
+    Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+[LOW/HIGH] B101 services\tools\services_smoke.py:201
+    Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+[LOW/HIGH] B101 services\tools\services_smoke.py:202
+    Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+[LOW/HIGH] B101 services\tools\services_smoke.py:203
+    Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+[LOW/HIGH] B101 services\tools\services_smoke.py:204
+    Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+TOTAL: 27
+
+======================================================================
+RUFF (S rules, excluding tests/)
+======================================================================
+[S310] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/api_gateway/main.py:920 Audit URL open for permitted schemes. Allowing use of `file:` or custom schemes is often unexpected.
+[S310] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/api_gateway/main.py:921 Audit URL open for permitted schemes. Allowing use of `file:` or custom schemes is often unexpected.
+[S104] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/api_gateway/main.py:985 Possible binding to all interfaces
+[S112] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/llm_service/provider.py:59 `try`-`except`-`continue` detected, consider logging the exception
+[S112] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/llm_service/provider.py:70 `try`-`except`-`continue` detected, consider logging the exception
+[S310] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/llm_service/provider.py:159 Audit URL open for permitted schemes. Allowing use of `file:` or custom schemes is often unexpected.
+[S310] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/llm_service/provider.py:163 Audit URL open for permitted schemes. Allowing use of `file:` or custom schemes is often unexpected.
+[S112] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/llm_service/provider.py:192 `try`-`except`-`continue` detected, consider logging the exception
+[S110] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/security_service/cache.py:91 `try`-`except`-`pass` detected, consider logging the exception
+[S311] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/security_service/resilience.py:18 Standard pseudo-random generators are not suitable for cryptographic purposes
+[S110] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/shared/bus.py:134 `try`-`except`-`pass` detected, consider logging the exception
+[S110] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/shared/bus.py:234 `try`-`except`-`pass` detected, consider logging the exception
+[S105] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/shared/config.py:41 Possible hardcoded password assigned to: "SECRET_KEY"
+[S314] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/shared/parsers/odt_parser.py:19 Using `xml` to parse untrusted data is known to be vulnerable to XML attacks; use `defusedxml` equivalents
+[S110] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/shared/parsers/pdf_parser.py:29 `try`-`except`-`pass` detected, consider logging the exception
+[S110] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/shared/registry.py:60 `try`-`except`-`pass` detected, consider logging the exception
+[S112] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/shared/registry.py:69 `try`-`except`-`continue` detected, consider logging the exception
+[S101] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/tools/services_smoke.py:180 Use of `assert` detected
+[S101] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/tools/services_smoke.py:181 Use of `assert` detected
+[S101] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/tools/services_smoke.py:182 Use of `assert` detected
+[S101] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/tools/services_smoke.py:191 Use of `assert` detected
+[S101] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/tools/services_smoke.py:192 Use of `assert` detected
+[S101] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/tools/services_smoke.py:193 Use of `assert` detected
+[S101] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/tools/services_smoke.py:201 Use of `assert` detected
+[S101] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/tools/services_smoke.py:202 Use of `assert` detected
+[S101] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/tools/services_smoke.py:203 Use of `assert` detected
+[S101] C:/Users/artyom/Desktop/лгту хуйня/fstec-service/services/tools/services_smoke.py:204 Use of `assert` detected
+--- counts (non-test) ---
+S101: 10
+S110: 5
+S310: 4
+S112: 4
+S104: 1
+S311: 1
+S105: 1
+S314: 1

@@ -1,0 +1,73 @@
+======================================================================
+PIP-AUDIT
+======================================================================
+pillow==12.2.0  (25 vulns)
+    PYSEC-2026-2253  fix: 12.3.0
+      Pillow is a Python imaging library. Prior to 12.3.0, PIL/PcfFontFile.py _load_bitmaps() read glyph dimensions from the PCF METRICS section and passed them directly to Image.frombytes() without calling
+    PYSEC-2026-2255  fix: 12.3.0
+      Pillow is a Python imaging library. Prior to 12.3.0, PIL/BdfFontFile.py bdf_char() read the BBX width and height field from a BDF font file and passed attacker-controlled dimensions to Image.new() wit
+    PYSEC-2026-2257  fix: 12.3.0
+      Pillow is a Python imaging library. Prior to 12.3.0, WindowsViewer.get_command() constructed a cmd.exe shell command by directly embedding a file path into an f-string without escaping and passed the 
+    PYSEC-2026-2256  fix: 12.3.0
+      Pillow is a Python imaging library. Prior to 12.3.0, PIL/GdImageFile.py GdImageFile._open() read image dimensions from the GD 2.x header and stored them in self._size without calling Image._decompress
+    PYSEC-2026-2254  fix: 12.3.0
+      Pillow is a Python imaging library. Prior to 12.3.0, PIL/FontFile.py FontFile.compile() assembled per-glyph images into a combined bitmap with Image.new("1", (xsize, ysize)) without calling Image._dec
+    PYSEC-2026-3453  fix: 12.3.0
+      Pillow is a Python imaging library. Prior to 12.3.0, Pillow's ImageCms.ImageCmsTransform.apply(im, imOut) API can trigger controlled native heap corruption when the caller supplies an output image who
+    PYSEC-2026-3451  fix: 12.3.0
+      Pillow is a Python imaging library. Prior to 12.3.0, Pillow public image coordinate APIs can trigger a native heap out-of-bounds write when given coordinates near the signed 32-bit integer limits in I
+    PYSEC-2026-3452  fix: 12.3.0
+      Pillow is a Python imaging library. From 12.0.0 through 12.2.0, Pillow's EPS parser in PIL/EpsImagePlugin.py accepts a negative byte count in the %%BeginBinary directive, allowing a crafted EPS file t
+    PYSEC-2026-3493  fix: 12.3.0
+      ## Summary  When Pillow loads an uncompressed image whose tile uses the `raw` codec and a mode in `Image._MAPMODES`, and the image was opened **from a filename**, it memory-maps the file and builds th
+    PYSEC-2026-2254  fix: 12.3.0
+      ## Description  `PIL/FontFile.py` `FontFile.compile()` assembles per-glyph images into a single combined bitmap using `Image.new("1", (xsize, ysize))` without calling `Image._decompression_bomb_check(
+    PYSEC-2026-2253  fix: 12.3.0
+      ## Description `PIL/PcfFontFile.py` `_load_bitmaps()` (line 227) reads glyph dimensions from the PCF `METRICS` section and passes them directly to `Image.frombytes()` without calling `Image._decompres
+    PYSEC-2026-2256  fix: 12.3.0
+      ## Description  `PIL/GdImageFile.py` `GdImageFile._open()` reads image dimensions from the GD 2.x header and stores them in `self._size` without calling `Image._decompression_bomb_check()`. Because `G
+    PYSEC-2026-2255  fix: 12.3.0
+      ### Summary `PIL/BdfFontFile.py` `bdf_char()` (lines 84–88) reads the `BBX width height` field from a BDF font file and passes the dimensions directly to `Image.new()` without calling `Image._decompre
+    PYSEC-2026-3454  fix: 12.3.0
+      ### Summary  Pillow's public rank-filter API can trigger a native heap out-of-bounds write when given a very large odd filter size.  Minimal public API trigger:  ```python from PIL import Image, Image
+    PYSEC-2026-3451  fix: 12.3.0
+      ### Summary  Pillow's public image coordinate APIs can trigger a native heap out-of-bounds write when given coordinates near the signed 32-bit integer limits. In 4-byte pixel modes such as `RGBA`, thi
+    PYSEC-2026-3494  fix: 12.3.0
+      ### Summary  Pillow's TGA RLE encoder reads past its row buffer when saving a mode `"1"` image. Adjacent process heap bytes can be copied into the generated TGA file.  The bug is reachable through the
+    PYSEC-2026-3452  fix: 12.3.0
+      ### Summary  Pillow's EPS parser (PIL/EpsImagePlugin.py) accepts a negative byte count in the %%BeginBinary directive. A crafted EPS file can cause Image.open() to seek backwards to the same directive
+    PYSEC-2026-3495  fix: 12.3.0
+      ### Summary `PdfParser.PdfStream.decode()` in Pillow's `PdfParser.py` calls `zlib.decompress()` with the `bufsize` parameter set to the value of the PDF stream's `Length` field, without any upper boun
+    PYSEC-2026-3496  fix: 12.3.0
+      ### Summary `src/libImaging/Jpeg2KDecode.c:853` accumulates `total_component_width` across every tile in a JPEG2000 image instead of recomputing it per tile. That accumulated value is then used in the
+    PYSEC-2026-3453  fix: 12.3.0
+      ### Summary  Pillow's public `ImageCms.ImageCmsTransform.apply(im, imOut)` API can trigger controlled native heap corruption when the caller supplies an output image whose mode does not match the tran
+    PYSEC-2026-3454  fix: 12.3.0
+      Pillow is a Python imaging library. Prior to 12.3.0, Pillow's public rank-filter API can trigger a native heap out-of-bounds write when given a very large odd filter size because ImageFilter.RankFilte
+    PYSEC-2026-3495  fix: 12.3.0
+      ### Summary `PdfParser.PdfStream.decode()` in Pillow's `PdfParser.py` calls `zlib.decompress()` with the `bufsize` parameter set to the value of the PDF stream's `Length` field, without any upper boun
+    PYSEC-2026-3496  fix: 12.3.0
+      ### Summary `src/libImaging/Jpeg2KDecode.c:853` accumulates `total_component_width` across every tile in a JPEG2000 image instead of recomputing it per tile. That accumulated value is then used in the
+    PYSEC-2026-3494  fix: 12.3.0
+      ### Summary  Pillow's TGA RLE encoder reads past its row buffer when saving a mode `"1"` image. Adjacent process heap bytes can be copied into the generated TGA file.  The bug is reachable through the
+    PYSEC-2026-3493  fix: 12.3.0
+      ## Summary  When Pillow loads an uncompressed image whose tile uses the `raw` codec and a mode in `Image._MAPMODES`, and the image was opened **from a filename**, it memory-maps the file and builds th
+ecdsa==0.19.2  (2 vulns)
+    PYSEC-2026-1325  fix: нет
+      python-ecdsa has been found to be subject to a Minerva timing attack on the P-256 curve. Using the `ecdsa.SigningKey.sign_digest()` API function and timing signatures an attacker can leak the internal
+    PYSEC-2026-1325  fix: нет
+      python-ecdsa has been found to be subject to a Minerva timing attack on the P-256 curve. Using the `ecdsa.SigningKey.sign_digest()` API function and timing signatures an attacker can leak the internal
+
+======================================================================
+NPM AUDIT (all incl. dev)
+======================================================================
+--- npm-audit.json ---
+metadata: {'info': 0, 'low': 0, 'moderate': 1, 'high': 3, 'critical': 0, 'total': 4}
+  [high] nanoid  fixAvailable=True  via=['nanoid: custom generators can loop indefinitely when size is zero']
+  [moderate] postcss  fixAvailable=True  via=['PostCSS: incomplete fix of GHSA-6g55-p6wh-862q тАФ attacker-controlled sourceMappingURL reads arbitrary .map files when `from` is unset']
+  [high] react-router  fixAvailable=True  via=['React Router: RSC Mode CSRF Bypass Allows Action Execution Before 400 Response']
+  [high] react-router-dom  fixAvailable=True  via=[]
+--- npm-audit-prod.json ---
+metadata: {'info': 0, 'low': 0, 'moderate': 0, 'high': 2, 'critical': 0, 'total': 2}
+  [high] react-router  fixAvailable=True  via=['React Router: RSC Mode CSRF Bypass Allows Action Execution Before 400 Response']
+  [high] react-router-dom  fixAvailable=True  via=[]

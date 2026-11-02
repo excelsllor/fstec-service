@@ -1,0 +1,35 @@
+# Общие зависимости сервисов (микросервисы, ТЗ 3.1)
+fastapi==0.140.7
+uvicorn[standard]==0.51.0
+sqlalchemy==2.0.51
+pydantic==2.13.4
+PyJWT==2.15.1
+bcrypt==5.0.0
+python-multipart==0.0.32
+aiokafka==0.11.0
+redis==5.2.1
+httpx==0.28.1
+psycopg2-binary==2.9.10
+PyMySQL==1.1.1
+psutil==5.9.8
+
+# Парсинг и генерация
+pdfplumber==0.11.10
+Pillow==13.0.0
+python-docx==1.2.0
+olefile==0.47
+openpyxl==3.1.5
+chardet==7.4.3
+striprtf==0.0.26
+pymupdf==1.28.2
+pytesseract==0.3.13
+pdf2image==1.17.0
+setuptools==84.2.1
+
+# OCR (опционально: ставить на машине с GPU или CPU; без них используется Tesseract)
+# GPU-вариант PaddleOCR — отдельный файл requirements-ocr.txt (build arg WITH_OCR=true)
+# (для CPU-only: paddlepaddle==2.6.2)
+
+# LLM / классификация (опционально: RuBERT нужен для быстрой классификации)
+# torch>=2.3
+# transformers>=4.44
